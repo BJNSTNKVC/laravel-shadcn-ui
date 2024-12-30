@@ -3,7 +3,10 @@
 namespace Bjnstnkvc\ShadcnUi\Tests;
 
 use Bjnstnkvc\ShadcnUi\ShadcnUiServiceProvider;
+use Bjnstnkvc\ShadcnUi\Tests\Support\Template;
 use Illuminate\Foundation\Application;
+use Illuminate\Http\Request;
+use Illuminate\Routing\Router;
 use Illuminate\Support\Collection;
 use Orchestra\Testbench\Dusk\TestCase;
 
@@ -34,6 +37,18 @@ class DuskTestCase extends TestCase
         $app['config']->set('app.env', env('APP_ENV', 'testing'));
         $app['config']->set('app.debug', env('APP_DEBUG', true));
         $app['config']->set('app.url', $this->applicationBaseUrl());
+    }
+
+    /**
+     * Define web routes setup.
+     *
+     * @param Router $router
+     *
+     * @return void
+     */
+    protected function defineWebRoutes($router): void
+    {
+        $router->get('/shadcn-ui', fn(Request $request) => (new Template(...$request->all()))->render())->name('shadcn-ui.component');
     }
 
     /**
@@ -80,5 +95,25 @@ class DuskTestCase extends TestCase
     protected function captureScreenshotsFor($browsers)
     {
         // Disable screenshots.
+    }
+
+    /**
+     * Get component route.
+     *
+     * @param string       $component
+     * @param array|string $scripts
+     *
+     * @return string
+     */
+    protected function component(string $component, array|string $scripts = []): string
+    {
+        return route(
+            name      : 'shadcn-ui.component',
+            parameters: [
+                'component' => $component,
+                'scripts'   => $scripts,
+            ],
+            absolute  : false
+        );
     }
 }

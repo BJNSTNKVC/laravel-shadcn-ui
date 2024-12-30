@@ -2,6 +2,7 @@
 
 namespace Bjnstnkvc\ShadcnUi;
 
+use Bjnstnkvc\ShadcnUi\Console\Commands;
 use Bjnstnkvc\ShadcnUi\View\Components;
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\ServiceProvider;
@@ -16,7 +17,12 @@ class ShadcnUiServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
-        //
+        if ($this->app->runningInConsole()) {
+            $this->commands([
+                Commands\AddComponentCommand::class,
+                Commands\RemoveComponentCommand::class,
+            ]);
+        }
     }
 
     /**

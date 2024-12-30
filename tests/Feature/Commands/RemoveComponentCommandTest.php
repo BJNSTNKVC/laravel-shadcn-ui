@@ -2,11 +2,15 @@
 
 namespace Bjnstnkvc\ShadcnUi\Tests\Feature\Commands;
 
+use Bjnstnkvc\ShadcnUi\Tests\Support\CleansUpComponents;
 use Bjnstnkvc\ShadcnUi\Tests\TestCase;
+use Illuminate\Filesystem\Filesystem;
 use PHPUnit\Framework\Attributes\Test;
 
 class RemoveComponentCommandTest extends TestCase
 {
+    use CleansUpComponents;
+
     /**
      * Question for the console command.
      *
@@ -111,5 +115,7 @@ class RemoveComponentCommandTest extends TestCase
             directory: resource_path("views/components/Accordion"),
             message  : "Accordion component resource was removed."
         );
+
+        $this->cleanUp();
     }
 }

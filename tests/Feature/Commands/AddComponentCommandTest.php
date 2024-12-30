@@ -2,25 +2,20 @@
 
 namespace Bjnstnkvc\ShadcnUi\Tests\Feature\Commands;
 
+use Bjnstnkvc\ShadcnUi\Tests\Support\CleansUpComponents;
 use Bjnstnkvc\ShadcnUi\Tests\TestCase;
-use Illuminate\Filesystem\Filesystem;
 use PHPUnit\Framework\Attributes\Test;
 
 class AddComponentCommandTest extends TestCase
 {
+    use CleansUpComponents;
+
     /**
      * Question for the console command.
      *
      * @var string
      */
     protected const QUESTION = 'Which components would you like to add?';
-
-    /**
-     * Filesystem instance.
-     *
-     * @var Filesystem
-     */
-    private static Filesystem $fs;
 
     /**
      * Clean up the testing environment before the next test.
@@ -31,7 +26,7 @@ class AddComponentCommandTest extends TestCase
     {
         parent::tearDown();
 
-        self::cleanUp();
+        $this->cleanUp();
     }
 
     #[Test]
@@ -131,23 +126,5 @@ class AddComponentCommandTest extends TestCase
                 answer  : true
             )
             ->assertSuccessful();
-    }
-
-    /**
-     * Remove the generated Component classes.
-     *
-     * @return void
-     */
-    private static function cleanUp(): void
-    {
-        self::$fs ??= new Filesystem();
-
-        self::$fs->deleteDirectory(app_path('View'));
-        self::$fs->deleteDirectory(resource_path('views/components'));
-        self::$fs->deleteDirectory(resource_path('js/components'));
-
-        foreach (self::$fs->glob(app_path("../../src/View/Components/*/.published")) as $file) {
-            self::$fs->delete($file);
-        }
     }
 }

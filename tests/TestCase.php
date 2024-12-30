@@ -4,6 +4,7 @@ namespace Bjnstnkvc\ShadcnUi\Tests;
 
 use Bjnstnkvc\ShadcnUi\ShadcnUiServiceProvider;
 use Bjnstnkvc\ShadcnUi\Tests\Support\InteractsWithViews;
+use Illuminate\Filesystem\Filesystem;
 use Illuminate\Foundation\Application;
 use Orchestra\Testbench\TestCase as BaseTestCase;
 

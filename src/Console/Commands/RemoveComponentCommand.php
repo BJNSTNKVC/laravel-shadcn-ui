@@ -54,5 +54,7 @@ class RemoveComponentCommand extends Command
         $this->fs->deleteDirectory(resource_path("views/components/{$component['view']}"));
         $this->fs->delete(resource_path("js/components/{$component['view']}.js"));
         $this->fs->delete("{$component['path']}/.published");
+
+        $this->info("{$component['name']} component removed.");
     }
 }

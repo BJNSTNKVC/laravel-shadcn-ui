@@ -4,6 +4,7 @@ namespace Bjnstnkvc\ShadcnUi;
 
 use Bjnstnkvc\ShadcnUi\Console\Commands;
 use Bjnstnkvc\ShadcnUi\View\Components;
+use Illuminate\Filesystem\Filesystem;
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Str;
@@ -94,5 +95,38 @@ class ShadcnUiServiceProvider extends ServiceProvider
     private function files(string $directory): array|false
     {
         return array_diff(scandir($directory), ['..', '.']);
+    }
+
+    /**
+     * Boot Shadcn UI components.
+     *
+     * @return void
+     */
+    public static function components(): void
+    {
+        $fs          = new Filesystem();
+        $directories = $fs->directories(__DIR__ . '\View\Components');
+
+        foreach ($directories as $directory) {
+            if (!$fs->exists("{$directory}/.published")) {
+                continue;
+            }
+
+            $path       = basename($directory);
+            $components = $fs->files($directory);
+
+            foreach ($components as $component) {
+                $name = Str::replace('.php', '', $component->getFilename());
+
+                $class = Str::of($name)
+                    ->ucsplit()
+                    ->map(fn(string $word) => Str::lower($word))
+                    ->implode('-');
+
+                Blade::component($class, "App\View\Components\\$path\\$name");
+            }
+        }
+
+        Blade::component(Components\Compiler\CompileAsChild::class, 'compile-as-child');
     }
 }

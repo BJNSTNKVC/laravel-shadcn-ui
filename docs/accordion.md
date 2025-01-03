@@ -22,8 +22,7 @@ Alpine.start();
 
 ## Usage
 
-```bladehtml
-
+```html
 <x-accordion class="w-full">
 	<x-accordion-item value="item-1">
 		<x-accordion-trigger>
@@ -67,6 +66,7 @@ Contains all the parts of an accordion.
 | `disabled`    | When true, prevents the user from interacting with the accordion and all its items.                           | `bool`              | `false`    |                           |
 | `direction`   | The reading direction of the accordion when applicable. If omitted, assumes LTR (left-to-right) reading mode. | `string`            | `ltr`      | ltr <br/> rtl             |
 | `orientation` | The orientation of the accordion.                                                                             | `string`            | `vertical` | vertical <br/> horizontal |
+| `asChild`     | Change the default rendered element for the one passed as a child, merging their props and behavior.          | `bool`              | `false`    |                           |
 
 ### Item
 

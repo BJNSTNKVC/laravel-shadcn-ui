@@ -4,7 +4,6 @@ namespace Bjnstnkvc\ShadcnUi\Tests\Feature\Commands;
 
 use Bjnstnkvc\ShadcnUi\Tests\Support\CleansUpComponents;
 use Bjnstnkvc\ShadcnUi\Tests\TestCase;
-use Illuminate\Filesystem\Filesystem;
 use PHPUnit\Framework\Attributes\Test;
 
 class RemoveComponentCommandTest extends TestCase

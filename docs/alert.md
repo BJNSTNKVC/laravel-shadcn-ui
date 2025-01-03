@@ -64,11 +64,3 @@ Contains additional details of the alert.
 | Prop      | Description                                                                                          | Type   | Default | Options |
 |-----------|------------------------------------------------------------------------------------------------------|--------|---------|---------|
 | `asChild` | Change the default rendered element for the one passed as a child, merging their props and behavior. | `bool` | `false` |         |
-
-### Content
-
-Contains the collapsible content for an item.
-
-| Prop      | Description                                                                                          | Type   | Default | Options |
-|-----------|------------------------------------------------------------------------------------------------------|--------|---------|---------|
-| `asChild` | Change the default rendered element for the one passed as a child, merging their props and behavior. | `bool` | `false` |         |

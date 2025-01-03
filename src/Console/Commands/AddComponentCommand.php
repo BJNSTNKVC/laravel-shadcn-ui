@@ -74,12 +74,18 @@ class AddComponentCommand extends Command
             $this->fs->put("$path\\{$file->getBasename()}", $content);
         }
 
+        $this->info("Component classes published at: app/View/Components/$name");
+
         $this->fs->copyDirectory(self::RESOURCE_PATH . "/views/components/{$component['view']}", $views);
+
+        $this->info("Blade views published at: resources/views/components/{$component['view']}");
 
         if ($this->fs->exists($js = self::RESOURCE_PATH . "/js/components/{$component['view']}.js")) {
             $this->fs->ensureDirectoryExists($scripts = resource_path('js/components'));
 
             $this->fs->copy($js, "$scripts/{$component['view']}.js");
+
+            $this->info("Script file published at: resources/js/components/{$component['view']}.js");
         }
 
         $this->fs->put("{$component['path']}/.published", '');

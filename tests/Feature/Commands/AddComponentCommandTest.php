@@ -48,16 +48,24 @@ class AddComponentCommandTest extends TestCase
                 question: self::QUESTION,
                 answer  : ['Accordion']
             )
+            ->expectsOutput('Component classes published at: app/View/Components/Accordion')
+            ->expectsOutput('Blade views published at: resources/views/components/accordion')
+            ->expectsOutput('Script file published at: resources/js/components/accordion.js')
             ->assertSuccessful();
 
         $this->assertDirectoryExists(
             directory: app_path('View/Components/Accordion'),
-            message  : 'Component was not created'
+            message  : 'Component was not created.'
         );
 
         $this->assertDirectoryExists(
             directory: resource_path('views/components/accordion'),
-            message  : 'Component was not created'
+            message  : 'Component view was not created.'
+        );
+
+        $this->assertFileExists(
+            filename: resource_path('js/components/accordion.js'),
+            message : 'Component script was not created.'
         );
     }
 

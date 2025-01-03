@@ -40,6 +40,7 @@ class RemoveComponentCommandTest extends TestCase
                 question: self::QUESTION,
                 answer  : ['Accordion']
             )
+            ->expectsOutput('Accordion component removed.')
             ->assertSuccessful();
 
         $this->assertDirectoryDoesNotExist(

@@ -70,8 +70,8 @@ class Command extends BaseCommand implements PromptsForMissingInput
     protected function promptForMissingArgumentsUsing(): array
     {
         $options = $this->directories
-            ->mapWithKeys(fn(array $component, string $key) => [$component['name'] => $key])
-            ->prepend('*', 'All');
+            ->mapWithKeys(fn(array $component, string $key) => [$key => $component['name']])
+            ->prepend('All', '*');
 
         $question = $this instanceof AddComponentCommand
             ? 'Which components would you like to add?'
@@ -95,7 +95,9 @@ class Command extends BaseCommand implements PromptsForMissingInput
     {
         return $this->all()
             ? $this->directories->toArray()
-            : $this->directories->whereIn('name', $this->argument('components'))->toArray();
+            : $this->directories
+                ->filter(fn(array $component, int $key) => in_array($key, $this->argument('components')) || in_array($component['name'], $this->argument('components')))
+                ->toArray();
     }
 
     /**
@@ -140,6 +142,7 @@ class Command extends BaseCommand implements PromptsForMissingInput
     private function directories(): Collection
     {
         return (new Collection($this->fs->directories(self::CLASS_PATH)))
+            ->reject(fn(string $path) => Str::contains($path, 'Compiler'))
             ->map(function (string $path) {
                 $name = basename($path);
                 $view = Str::of($name)

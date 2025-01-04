@@ -574,7 +574,7 @@ class AccordionTest extends DuskTestCase
     {
         $this->browse(function (Browser $browser) {
             $template = <<<'HTML'
-                <x-accordion class="w-full" type="single" x-on:value-change="$el.setAttribute('data-active', $event.detail.id)">
+                <x-accordion class="w-full" type="single" x-on:value-change="$el.setAttribute('data-active', $event.detail.value)">
                     <x-accordion-item value="item-1">
                         <x-accordion-trigger dusk="item-1">Trigger</x-accordion-trigger>
                         <x-accordion-content dusk="content-1">Content</x-accordion-content>
@@ -588,7 +588,9 @@ class AccordionTest extends DuskTestCase
 
             $browser->visit($this->component($template, ['accordion.js']))
                 ->click('@item-1')
-                ->assertAttribute('div', 'data-active', 'accordion-item-1');
+                ->assertAttribute('div', 'data-active', 'item-1')
+                ->click('@item-2')
+                ->assertAttribute('div', 'data-active', 'item-2');
         });
     }
 
@@ -597,7 +599,7 @@ class AccordionTest extends DuskTestCase
     {
         $this->browse(function (Browser $browser) {
             $template = <<<'HTML'
-                <x-accordion class="w-full" type="multiple" x-on:value-change="$el.setAttribute('data-active', $event.detail.map((item) => item.id))">
+                <x-accordion class="w-full" type="multiple" x-on:value-change="$el.setAttribute('data-active', $event.detail.value)">
                     <x-accordion-item value="item-1">
                         <x-accordion-trigger dusk="item-1">Trigger</x-accordion-trigger>
                         <x-accordion-content dusk="content-1">Content</x-accordion-content>
@@ -612,7 +614,7 @@ class AccordionTest extends DuskTestCase
             $browser->visit($this->component($template, ['accordion.js']))
                 ->click('@item-1')
                 ->click('@item-2')
-                ->assertAttribute('div', 'data-active', 'accordion-item-1,accordion-item-2');
+                ->assertAttribute('div', 'data-active', 'item-1,item-2');
         });
     }
 }

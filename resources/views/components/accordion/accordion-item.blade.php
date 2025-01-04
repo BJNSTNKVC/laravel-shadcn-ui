@@ -4,7 +4,7 @@
         'data-orientation' => $orientation,
         'data-state' => $state,
         'data-disabled' => $disabled ? true : null,
-        'x-init' => "add('$id', \$el)",
+        'x-init' => "set('$id', '$value')",
     ])
     ->class(['border-b']);
 @endphp

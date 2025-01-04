@@ -23,6 +23,7 @@ Alpine.start();
 ## Usage
 
 ```html
+
 <x-accordion class="w-full">
 	<x-accordion-item value="item-1">
 		<x-accordion-trigger>
@@ -93,6 +94,34 @@ Contains the collapsible content for an item.
 | Prop      | Description                                                                                          | Type   | Default | Options |
 |-----------|------------------------------------------------------------------------------------------------------|--------|---------|---------|
 | `asChild` | Change the default rendered element for the one passed as a child, merging their props and behavior. | `bool` | `false` |         |
+
+## Events
+
+When Accordion Item is expanded or collapsed, the `value-change` event handler is called. The event handler receives the value/values of the expanded item.
+
+If you are using `Alpine.js`, the handler is attached to the accordion element:
+
+```html
+<x-accordion x-on:value-change="console.log($event.detail.value)">
+    ...
+</x-accordion>
+```
+
+Alternatively, you can attach the handler to the accordion item using vanilla JS:
+
+```html
+<x-accordion id="accordion">
+    ...
+</x-accordion>
+```
+
+```js
+const accordion = document.getElementById('accordion');
+
+accordion.addEventListener('value-change', (event) => {
+    console.log(event.detail.value);
+})
+```
 
 ## Accessibility
 

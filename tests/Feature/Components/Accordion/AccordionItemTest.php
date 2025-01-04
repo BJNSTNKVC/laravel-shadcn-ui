@@ -20,7 +20,7 @@ class AccordionItemTest extends TestCase
         HTML;
 
         $this->assertStringContainsString(
-            needle  : '<div class="border-b" data-orientation="vertical" data-state="closed" x-init="add(\'accordion-item-1\', $el)">',
+            needle  : '<div class="border-b" data-orientation="vertical" data-state="closed" x-init="set(\'accordion-item-1\', \'item-1\')">',
             haystack: $this->minify($this->blade($template)),
             message : 'The Accordion Item component is not rendered.'
         );
@@ -36,7 +36,7 @@ class AccordionItemTest extends TestCase
         HTML;
 
         $this->assertStringContainsString(
-            needle  : '<div class="border-b" data-orientation="horizontal" data-state="open" x-init="add(\'accordion-item-1\', $el)">',
+            needle  : '<div class="border-b" data-orientation="horizontal" data-state="open" x-init="set(\'accordion-item-1\', \'item-1\')">',
             haystack: $this->minify($this->blade($template)),
             message : 'The Accordion Item component with props is not rendered.'
         );
@@ -72,7 +72,7 @@ class AccordionItemTest extends TestCase
         HTML;
 
         $this->assertStringContainsString(
-            needle  : '<section class="border-b" data-orientation="vertical" data-state="closed" x-init="add(\'accordion-item-1\', $el)">',
+            needle  : '<section class="border-b" data-orientation="vertical" data-state="closed" x-init="set(\'accordion-item-1\', \'item-1\')">',
             haystack: $this->minify($this->blade($template)),
             message : 'The Accordion Item component is not rendered as child.'
         );

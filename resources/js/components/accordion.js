@@ -1,19 +1,27 @@
 /**
+ * @typedef { 'vertical' | 'horizontal' } Orientation
+ * @typedef { 'open' | 'closed' } State
+ * @typedef { 'single' | 'multiple' } Type
+ * @typedef { 'ltr' | 'rtl' } Direction
+ */
+
+/**
  * @typedef { Object } Item
  * @property { String } id
+ * @property { String } value
  * @property { HTMLElement } container
  * @property { HTMLElement } title
  * @property { HTMLElement } button
  * @property { HTMLElement } content
- * @property { 'vertical' | 'horizontal '} orientation
- * @property { 'open' | 'closed' } state
+ * @property { Orientation } orientation
+ * @property { State } state
  */
 
 /**
  * @typedef { Object } Config
- * @property { 'single' | 'multiple' } type
+ * @property { Type } type
  * @property { Boolean } collapsible
- * @property { 'ltr' | 'rtl' } direction
+ * @property { Direction } direction
  */
 
 /**
@@ -51,23 +59,24 @@ export default (config) => ({
 	},
 
 	/**
-	 * Add a new item to the accordion.
+	 * Set an accordion item.
 	 *
 	 * @param { String } id
-	 * @param { HTMLElement } item
+	 * @param { String } value
 	 *
 	 * @return { Item }
 	 */
-	add(id, item) {
+	set(id, value) {
 		/** @type { Item } */
 		const $item = {
 			id         : id,
-			container  : item,
-			title      : item.querySelector('h3'),
-			button     : item.querySelector(`h3 > [id="${id}"]`),
-			content    : item.querySelector(`:not(h3) > [id="${id}"]`),
-			orientation: item.dataset.orientation,
-			state      : item.dataset.state
+			value      : value,
+			container  : this.$el,
+			title      : this.$el.querySelector('h3'),
+			button     : this.$el.querySelector(`h3 > [id="${id}"]`),
+			content    : this.$el.querySelector(`:not(h3) > [id="${id}"]`),
+			orientation: this.$el.dataset.orientation,
+			state      : this.$el.dataset.state,
 		};
 
 		this.$items.push($item);
@@ -140,16 +149,18 @@ export default (config) => ({
 
 		item.state === 'closed' ? this.open(item) : this.close(item);
 
-		let detail = config.type === 'single' ? this.active[0] : this.active;
+		let value = config.type === 'single'
+			? this.active[0]?.value ?? ''
+			: this.active.map((item) => item.value);
 
-		this.$accordion.dispatchEvent(new ValueChange(detail));
+		this.$accordion.dispatchEvent(new ValueChange({ 'value': value }));
 	},
 
 	/**
 	 * Set the state of an item.
 	 *
 	 * @param { Item } item
-	 * @param { 'open' | 'closed' } state
+	 * @param { State } state
 	 *
 	 * @return { void }
 	 */

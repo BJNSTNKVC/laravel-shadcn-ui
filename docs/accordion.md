@@ -23,7 +23,6 @@ Alpine.start();
 ## Usage
 
 ```html
-
 <x-accordion class="w-full">
 	<x-accordion-item value="item-1">
 		<x-accordion-trigger>

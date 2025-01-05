@@ -58,14 +58,6 @@ slower connections.
 | `delay`   | Change                                                                                               | `int`  | `0`     |         |
 | `asChild` | Change the default rendered element for the one passed as a child, merging their props and behavior. | `bool` | `false` |         |
 
-### Content
-
-Contains the collapsible content for an item.
-
-| Prop      | Description                                                                                          | Type   | Default | Options |
-|-----------|------------------------------------------------------------------------------------------------------|--------|---------|---------|
-| `asChild` | Change the default rendered element for the one passed as a child, merging their props and behavior. | `bool` | `false` |         |
-
 ## Events
 
 When Avatar Image is loaded, the `loading-status-change` event handler is called, providing information about the loading status of the image. This is useful in case you want to control more precisely what to render as the image is loading.

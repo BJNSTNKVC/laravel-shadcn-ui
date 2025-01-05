@@ -13,7 +13,6 @@ php artisan shadcn:add AspectRatio
 ## Usage
 
 ```html
-
 <x-aspect-ratio :ratio="16 / 9">
 	<img
 	  class="size-full object-cover"

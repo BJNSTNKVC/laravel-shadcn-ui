@@ -150,3 +150,4 @@ the available components:
 - [Accordion](docs/accordion.md)
 - [Alert](docs/alert.md)
 - [Aspect Ratio](docs/aspect-ratio.md)
+- [Avatar](docs/avatar.md)

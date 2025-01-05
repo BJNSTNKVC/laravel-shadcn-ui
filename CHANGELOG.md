@@ -4,6 +4,17 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
+## [1.0.3 (2025-01-05)](https://github.com/BJNSTNKVC/laravel-shadcn-ui/compare/1.0.2...1.0.3)
+
+### Added
+
+- Added Avatar component.
+
+### Changed
+
+- Events section in `accordion.md`.
+- `value-change` event handler detail type from an accordion item object to `string` or `string[]` depending on the `type`.
+
 ## [1.0.2 (2025-01-04)](https://github.com/BJNSTNKVC/laravel-shadcn-ui/compare/1.0.1...1.0.2)
 
 ### Added
@@ -12,8 +23,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ### Changed
 
-- Events section in `accordion.md`.
-- `value-change` event handler detail type from an accordion item object to `string` or `string[]` depending on the `type`.
+- Unified variable name when building the components for Dusk tests.
+
 
 ## [1.0.1 (2025-01-03)](https://github.com/BJNSTNKVC/laravel-shadcn-ui/compare/1.0.0...1.0.1)
 

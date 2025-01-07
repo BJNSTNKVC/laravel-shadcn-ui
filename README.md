@@ -151,3 +151,4 @@ the available components:
 - [Alert](docs/alert.md)
 - [Aspect Ratio](docs/aspect-ratio.md)
 - [Avatar](docs/avatar.md)
+- [Badge](docs/badge.md)

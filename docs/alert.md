@@ -2,8 +2,7 @@
 
 ## Installation
 
-In order to use the Alert component, you need to add the component to your Laravel application using the following
-command:
+In order to use the Alert component, you need to add the component to your Laravel application using the following command:
 
 ```bash
 php artisan shadcn:add Alert

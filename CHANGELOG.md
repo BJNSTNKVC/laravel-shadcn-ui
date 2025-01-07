@@ -4,6 +4,16 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
+## [1.0.4 (2025-01-07)](https://github.com/BJNSTNKVC/laravel-shadcn-ui/compare/1.0.3...1.0.4)
+
+### Added
+
+- Added Badge component.
+
+### Changed
+
+- Formatting in component .md files.
+
 ## [1.0.3 (2025-01-05)](https://github.com/BJNSTNKVC/laravel-shadcn-ui/compare/1.0.2...1.0.3)
 
 ### Added

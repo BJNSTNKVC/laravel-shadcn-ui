@@ -152,3 +152,4 @@ the available components:
 - [Aspect Ratio](docs/aspect-ratio.md)
 - [Avatar](docs/avatar.md)
 - [Badge](docs/badge.md)
+- [Button](docs/button.md)

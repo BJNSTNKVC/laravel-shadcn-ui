@@ -56,16 +56,16 @@ Alpine.start();
 
 Contains all the parts of an accordion.
 
-| Prop          | Description                                                                                                   | Type                | Default    | Options                   |
-|---------------|---------------------------------------------------------------------------------------------------------------|---------------------|------------|---------------------------|
-| `theme`       | The style theme of the component                                                                              | `string`            | `default`  | default <br/> New York    |
-| `type`        | Determines whether one or multiple items can be opened at the same time.                                      | `string`            | `single`   | single <br/> multiple     |
-| `value`       | The value of the item to expand when initially rendered.                                                      | `string/array/null` | `null`     |                           |
-| `collapsible` | When type is "single", allows closing content when clicking trigger for an open item.                         | `bool`              | `false`    |                           |
-| `disabled`    | When true, prevents the user from interacting with the accordion and all its items.                           | `bool`              | `false`    |                           |
-| `direction`   | The reading direction of the accordion when applicable. If omitted, assumes LTR (left-to-right) reading mode. | `string`            | `ltr`      | ltr <br/> rtl             |
-| `orientation` | The orientation of the accordion.                                                                             | `string`            | `vertical` | vertical <br/> horizontal |
-| `asChild`     | Change the default rendered element for the one passed as a child, merging their props and behavior.          | `bool`              | `false`    |                           |
+| Prop          | Description                                                                                                   | Type                      | Default    | Options                   |
+|---------------|---------------------------------------------------------------------------------------------------------------|---------------------------|------------|---------------------------|
+| `theme`       | The style theme of the component                                                                              | `string`                  | `default`  | default <br/> New York    |
+| `type`        | Determines whether one or multiple items can be opened at the same time.                                      | `string`                  | `single`   | single <br/> multiple     |
+| `value`       | The value of the item to expand when initially rendered.                                                      | `string`\|`array`\|`null` | `null`     |                           |
+| `collapsible` | When type is `single`, allows closing content when clicking trigger for an open item.                         | `bool`                    | `false`    |                           |
+| `disabled`    | When `true`, prevents the user from interacting with the accordion and all its items.                         | `bool`                    | `false`    |                           |
+| `direction`   | The reading direction of the accordion when applicable. If omitted, assumes LTR (left-to-right) reading mode. | `string`                  | `ltr`      | ltr <br/> rtl             |
+| `orientation` | The orientation of the accordion.                                                                             | `string`                  | `vertical` | vertical <br/> horizontal |
+| `asChild`     | Change the default rendered element for the one passed as a child, merging their props and behavior.          | `bool`                    | `false`    |                           |
 
 ### Item
 
@@ -74,7 +74,7 @@ Contains all the parts of a collapsible section.
 | Prop       | Description                                                                                          | Type     | Default | Options |
 |------------|------------------------------------------------------------------------------------------------------|----------|---------|---------|
 | `value`    | The value of the item to expand when initially rendered.                                             | `string` | `null`  |         |
-| `disabled` | When true, prevents the user from interacting with the accordion item.                               | `bool`   | `false` |         |
+| `disabled` | When `true`, prevents the user from interacting with the accordion item.                             | `bool`   | `false` |         |
 | `asChild`  | Change the default rendered element for the one passed as a child, merging their props and behavior. | `bool`   | `false` |         |
 
 ### Trigger

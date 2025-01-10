@@ -154,3 +154,4 @@ the available components:
 - [Badge](docs/badge.md)
 - [Breadcrumb](docs/breadcrumb.md)
 - [Button](docs/button.md)
+- [Card](docs/card.md)

@@ -4,6 +4,12 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
+## [1.0.7 (2025-01-10)](https://github.com/BJNSTNKVC/laravel-shadcn-ui/compare/1.0.6...1.0.7)
+
+### Added
+
+- Added Card component.
+
 ## [1.0.6 (2025-01-09)](https://github.com/BJNSTNKVC/laravel-shadcn-ui/compare/1.0.5...1.0.6)
 
 ### Added

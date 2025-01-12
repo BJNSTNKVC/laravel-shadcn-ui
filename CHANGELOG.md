@@ -4,6 +4,16 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
+## [1.0.8 (2025-01-12)](https://github.com/BJNSTNKVC/laravel-shadcn-ui/compare/1.0.7...1.0.8)
+
+### Added
+
+- Added Checkbox component.
+
+### Changed
+
+- Pipe character (`|`) formatting in component .md files.
+
 ## [1.0.7 (2025-01-10)](https://github.com/BJNSTNKVC/laravel-shadcn-ui/compare/1.0.6...1.0.7)
 
 ### Added
@@ -41,7 +51,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 ### Changed
 
 - Events section in `accordion.md`.
-- `value-change` event handler detail type from an accordion item object to `string` or `string[]` depending on the `type`.
+- `value-change` event handler detail type from an accordion item object to `string` or `string[]` depending on the
+  `type`.
 
 ## [1.0.2 (2025-01-04)](https://github.com/BJNSTNKVC/laravel-shadcn-ui/compare/1.0.1...1.0.2)
 
@@ -52,7 +63,6 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 ### Changed
 
 - Unified variable name when building the components for Dusk tests.
-
 
 ## [1.0.1 (2025-01-03)](https://github.com/BJNSTNKVC/laravel-shadcn-ui/compare/1.0.0...1.0.1)
 

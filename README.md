@@ -155,3 +155,4 @@ the available components:
 - [Breadcrumb](docs/breadcrumb.md)
 - [Button](docs/button.md)
 - [Card](docs/card.md)
+- [Checkbox](docs/checkbox.md)

@@ -156,3 +156,4 @@ the available components:
 - [Button](docs/button.md)
 - [Card](docs/card.md)
 - [Checkbox](docs/checkbox.md)
+- [Collapsible](docs/collapsible.md)

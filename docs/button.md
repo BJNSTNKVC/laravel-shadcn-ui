@@ -1,4 +1,4 @@
-# Aspect Ratio
+# Button
 
 ## Installation
 
@@ -18,7 +18,7 @@ php artisan shadcn:add Button
 
 ### Button
 
-Contains the content you want to constrain to a badge.
+Contains the content you want to constrain to a button.
 
 | Prop      | Description                                                                                          | Type     | Default   | Options                                                                        |
 |-----------|------------------------------------------------------------------------------------------------------|----------|-----------|--------------------------------------------------------------------------------|

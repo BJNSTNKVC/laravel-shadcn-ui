@@ -38,10 +38,10 @@ php artisan shadcn:add Breadcrumb
 
 Contains all the parts of the breadcrumb.
 
-| Prop      | Description                                                                                          | Type     | Default   | Options                                                 |
-|-----------|------------------------------------------------------------------------------------------------------|----------|-----------|---------------------------------------------------------|
-| `theme`   | The style theme of the component                                                                     | `string` | `default` | default <br/> New York                                  |
-| `asChild` | Change the default rendered element for the one passed as a child, merging their props and behavior. | `bool`   | `false`   |                                                         |
+| Prop      | Description                                                                                          | Type     | Default   | Options                |
+|-----------|------------------------------------------------------------------------------------------------------|----------|-----------|------------------------|
+| `theme`   | The style theme of the component.                                                                    | `string` | `default` | default <br/> New York |
+| `asChild` | Change the default rendered element for the one passed as a child, merging their props and behavior. | `bool`   | `false`   |                        |
 
 ### List
 

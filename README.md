@@ -158,3 +158,4 @@ the available components:
 - [Checkbox](docs/checkbox.md)
 - [Collapsible](docs/collapsible.md)
 - [Input](docs/input.md)
+- [Label](docs/label.md)

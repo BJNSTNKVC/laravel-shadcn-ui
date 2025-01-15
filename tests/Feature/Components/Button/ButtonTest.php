@@ -11,11 +11,11 @@ class ButtonTest extends TestCase
     public function it_renders_the_component()
     {
         $template = <<<'HTML'
-            <x-badge></x-badge>
+            <x-button></x-button>
         HTML;
 
         $this->assertStringContainsString(
-            needle  : '<div class="inline-flex items-center border px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 rounded-full border-transparent bg-primary text-primary-foreground hover:bg-primary/80">',
+            needle  : '<button class="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 ring-offset-background focus-visible:ring-2 focus-visible:ring-offset-2 h-10 bg-primary text-primary-foreground hover:bg-primary/90 h-10 px-4 py-2">',
             haystack: $this->minify($this->blade($template)),
         );
     }
@@ -24,11 +24,11 @@ class ButtonTest extends TestCase
     public function it_renders_the_component_with_props()
     {
         $template = <<<'HTML'
-            <x-badge variant="destructive"></x-badge>
+            <x-button variant="destructive"></x-button>
         HTML;
 
         $this->assertStringContainsString(
-            needle  : '<div class="inline-flex items-center border px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 rounded-full border-transparent bg-destructive text-destructive-foreground hover:bg-destructive/80">',
+            needle  : '<button class="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 ring-offset-background focus-visible:ring-2 focus-visible:ring-offset-2 h-10 bg-destructive text-destructive-foreground hover:bg-destructive/90 h-10 px-4 py-2">',
             haystack: $this->minify($this->blade($template)),
         );
     }
@@ -37,9 +37,9 @@ class ButtonTest extends TestCase
     public function it_renders_the_component_with_slot()
     {
         $template = <<<'HTML'
-            <x-badge>
+            <x-button>
                 <div>Hello World</div>
-            </x-badge>
+            </x-button>
         HTML;
 
         $this->assertStringContainsString(
@@ -52,18 +52,18 @@ class ButtonTest extends TestCase
     public function it_renders_the_component_as_child()
     {
         $template = <<<'HTML'
-            <x-badge as-child>
+            <x-button as-child>
                 <section></section>
-            </x-badge>
+            </x-button>
         HTML;
 
         $this->assertStringNotContainsString(
-            needle  : '<div class="inline-flex items-center border px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 rounded-full border-transparent bg-primary text-primary-foreground hover:bg-primary/80">',
+            needle  : '<button class="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 ring-offset-background focus-visible:ring-2 focus-visible:ring-offset-2 h-10 bg-primary text-primary-foreground hover:bg-primary/90 px-4 py-2">',
             haystack: $this->minify($this->blade($template)),
         );
 
         $this->assertStringContainsString(
-            needle  : '<section class="inline-flex items-center border px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 rounded-full border-transparent bg-primary text-primary-foreground hover:bg-primary/80">',
+            needle  : '<section class="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 ring-offset-background focus-visible:ring-2 focus-visible:ring-offset-2 h-10 bg-primary text-primary-foreground hover:bg-primary/90 px-4 py-2">',
             haystack: $this->minify($this->blade($template)),
         );
     }

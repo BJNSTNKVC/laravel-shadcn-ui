@@ -69,12 +69,12 @@ Alpine.start();
 
 Contains all the parts of a collapsible.
 
-| Prop          | Description                                                                                                   | Type                      | Default    | Options                   |
-|---------------|---------------------------------------------------------------------------------------------------------------|---------------------------|------------|---------------------------|
-| `theme`       | The style theme of the component                                                                              | `string`                  | `default`  | default <br/> New York    |
-| `open`        | The controlled open state of the collapsible.                                                                 | `bool`                    | `false`    |                           |
-| `disabled`    | When `true`, prevents the user from interacting with the accordion and all its items.                         | `bool`                    | `false`    |                           |
-| `asChild`     | Change the default rendered element for the one passed as a child, merging their props and behavior.          | `bool`                    | `false`    |                           |
+| Prop       | Description                                                                                          | Type     | Default   | Options                |
+|------------|------------------------------------------------------------------------------------------------------|----------|-----------|------------------------|
+| `theme`    | The style theme of the component.                                                                    | `string` | `default` | default <br/> New York |
+| `open`     | The controlled open state of the collapsible.                                                        | `bool`   | `false`   |                        |
+| `disabled` | When `true`, prevents the user from interacting with the accordion and all its items.                | `bool`   | `false`   |                        |
+| `asChild`  | Change the default rendered element for the one passed as a child, merging their props and behavior. | `bool`   | `false`   |                        |
 
 ### Trigger
 

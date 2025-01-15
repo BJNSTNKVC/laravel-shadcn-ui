@@ -11,7 +11,7 @@ class Avatar extends Component
     use SharesData;
 
     /**
-     * The style theme of the component.
+     * The style theme of the component..
      *
      * @var string
      */

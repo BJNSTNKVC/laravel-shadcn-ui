@@ -44,7 +44,7 @@ Contains all the parts of the alert.
 
 | Prop      | Description                                                                                          | Type     | Default   | Options                   |
 |-----------|------------------------------------------------------------------------------------------------------|----------|-----------|---------------------------|
-| `theme`   | The style theme of the component                                                                     | `string` | `default` | default <br/> New York    |
+| `theme`   | The style theme of the component.                                                                    | `string` | `default` | default <br/> New York    |
 | `variant` | The variant of the alert.                                                                            | `string` | `default` | default <br/> destructive |
 | `asChild` | Change the default rendered element for the one passed as a child, merging their props and behavior. | `bool`   | `false`   |                           |
 

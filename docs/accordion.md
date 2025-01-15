@@ -58,7 +58,7 @@ Contains all the parts of an accordion.
 
 | Prop          | Description                                                                                                   | Type                      | Default    | Options                   |
 |---------------|---------------------------------------------------------------------------------------------------------------|---------------------------|------------|---------------------------|
-| `theme`       | The style theme of the component                                                                              | `string`                  | `default`  | default <br/> New York    |
+| `theme`       | The style theme of the component.                                                                             | `string`                  | `default`  | default <br/> New York    |
 | `type`        | Determines whether one or multiple items can be opened at the same time.                                      | `string`                  | `single`   | single <br/> multiple     |
 | `value`       | The value of the item to expand when initially rendered.                                                      | `string`\|`array`\|`null` | `null`     |                           |
 | `collapsible` | When type is `single`, allows closing content when clicking trigger for an open item.                         | `bool`                    | `false`    |                           |

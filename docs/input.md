@@ -20,6 +20,6 @@ php artisan shadcn:add Input
 
 Contains the content you want to constrain to an input.
 
-| Prop      | Description                                                                                          | Type     | Default   | Options                                                                        |
-|-----------|------------------------------------------------------------------------------------------------------|----------|-----------|--------------------------------------------------------------------------------|
-| `theme`   | The style theme of the component                                                                     | `string` | `default` | default <br/> New York                                                         |
+| Prop    | Description                       | Type     | Default   | Options                |
+|---------|-----------------------------------|----------|-----------|------------------------|
+| `theme` | The style theme of the component. | `string` | `default` | default <br/> New York |

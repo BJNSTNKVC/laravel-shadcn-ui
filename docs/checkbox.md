@@ -44,7 +44,7 @@ correctly.
 
 | Prop       | Description                                                                                           | Type                         | Default   | Options                |
 |------------|-------------------------------------------------------------------------------------------------------|------------------------------|-----------|------------------------|
-| `theme`    | The style theme of the component                                                                      | `string`                     | `default` | default <br/> New York |
+| `theme`    | The style theme of the component.                                                                     | `string`                     | `default` | default <br/> New York |
 | `checked`  | The controlled checked state of the checkbox.                                                         | `boolean`\|`'indeterminate'` | `null`    |                        |
 | `disabled` | When `true`, prevents the user from interacting with the checkbox.                                    | `bool`                       | `false`   |                        |
 | `required` | When `true`, indicates that the user must check the checkbox before the owning form can be submitted. | `bool`                       | `false`   |                        |

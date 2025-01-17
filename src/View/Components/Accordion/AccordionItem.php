@@ -11,7 +11,6 @@ use Illuminate\View\View;
  * @property-read string $theme
  * @property-read string $type
  * @property-read string $state
- * @property-read bool   $disabled
  * @property-read bool   $hidden
  * @property-read string $orientation
  */

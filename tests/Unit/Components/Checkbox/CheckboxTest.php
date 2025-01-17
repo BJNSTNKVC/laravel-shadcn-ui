@@ -31,6 +31,13 @@ class CheckboxTest extends TestCase
             condition: $checkbox->checked,
             message  : 'The "checked" property is not set correctly.'
         );
+
+        $checkbox = new Checkbox(checked: false);
+
+        $this->assertFalse(
+            condition: $checkbox->checked,
+            message  : 'The "checked" property is not set correctly.'
+        );
     }
 
     #[Test]
@@ -39,6 +46,13 @@ class CheckboxTest extends TestCase
         $checkbox = new Checkbox(disabled: true);
 
         $this->assertTrue(
+            condition: $checkbox->disabled,
+            message  : 'The "disabled" property is not set correctly.'
+        );
+
+        $checkbox = new Checkbox(disabled: false);
+
+        $this->assertFalse(
             condition: $checkbox->disabled,
             message  : 'The "disabled" property is not set correctly.'
         );
@@ -71,6 +85,13 @@ class CheckboxTest extends TestCase
         $checkbox = new Checkbox(required: true);
 
         $this->assertTrue(
+            condition: $checkbox->required,
+            message  : 'The "required" property is not set correctly.'
+        );
+
+        $checkbox = new Checkbox(required: false);
+
+        $this->assertFalse(
             condition: $checkbox->required,
             message  : 'The "required" property is not set correctly.'
         );

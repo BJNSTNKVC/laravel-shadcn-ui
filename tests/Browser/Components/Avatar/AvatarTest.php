@@ -12,14 +12,14 @@ class AvatarTest extends DuskTestCase
     public function it_renders_the_component(): void
     {
         $this->browse(function (Browser $browser) {
-            $component = <<<'HTML'
+            $template = <<<'HTML'
                 <x-avatar>
                     <x-avatar-image src="https://github.com/shadcn.png" dusk="image" />
                     <x-avatar-fallback dusk="fallback">CN</x-avatar-fallback>
                 </x-avatar>
             HTML;
 
-            $browser->visit($this->component($component))
+            $browser->visit($this->component($template))
                 ->assertAttribute('@image', 'x-ref', 'image')
                 ->assertAttribute('@fallback', 'x-ref', 'fallback');
         });
@@ -29,14 +29,14 @@ class AvatarTest extends DuskTestCase
     public function it_shows_the_fallback_when_image_is_not_loaded(): void
     {
         $this->browse(function (Browser $browser) {
-            $component = <<<'HTML'
+            $template = <<<'HTML'
                 <x-avatar>
                     <x-avatar-image src="https://github.com/non-existing-image.png" dusk="image" />
                     <x-avatar-fallback dusk="fallback">CN</x-avatar-fallback>
                 </x-avatar>
             HTML;
 
-            $browser->visit($this->component($component, ['avatar.js']))
+            $browser->visit($this->component($template, ['avatar.js']))
                 ->assertAttributeContains('@image', 'hidden', 'true')
                 ->assertVisible('@fallback');
         });
@@ -54,14 +54,14 @@ class AvatarTest extends DuskTestCase
         $this->closeAll();
 
         $this->browse(function (Browser $browser) {
-            $component = <<<'HTML'
+            $template = <<<'HTML'
                 <x-avatar>
                     <x-avatar-image src="non-existing-image.png" dusk="image" />
                     <x-avatar-fallback delay="1000" dusk="fallback">CN</x-avatar-fallback>
                 </x-avatar>
             HTML;
 
-            $browser->visit($this->component($component, ['avatar.js']))
+            $browser->visit($this->component($template, ['avatar.js']))
                 ->assertAttribute('@image', 'hidden', 'true')
                 ->assertMissing('@fallback')
                 ->pause(1000)
@@ -73,14 +73,14 @@ class AvatarTest extends DuskTestCase
     public function it_removes_the_fallback_when_image_is_loaded(): void
     {
         $this->browse(function (Browser $browser) {
-            $component = <<<'HTML'
+            $template = <<<'HTML'
                 <x-avatar>
                     <x-avatar-image src="https://github.com/shadcn.png" dusk="image" />
                     <x-avatar-fallback dusk="fallback">CN</x-avatar-fallback>
                 </x-avatar>
             HTML;
 
-            $browser->visit($this->component($component, ['avatar.js']))
+            $browser->visit($this->component($template, ['avatar.js']))
                 ->whenAvailable('@image', function (Browser $browser) {
                     $browser->assertMissing('@fallback');
                 });
@@ -101,28 +101,28 @@ class AvatarTest extends DuskTestCase
         JS;
 
         $this->browse(function (Browser $browser) use ($script) {
-            $component = <<<"HTML"
+            $template = <<<"HTML"
                 <x-avatar dusk="avatar">
                     <x-avatar-image src="https://s1.1zoom.me/big3/698/Planets_Surface_of_496688.jpg" dusk="image" x-on:loading-status-change="$script" />
                     <x-avatar-fallback dusk="fallback">CN</x-avatar-fallback>
                 </x-avatar>
             HTML;
 
-            $browser->visit($this->component($component, ['avatar.js']))
+            $browser->visit($this->component($template, ['avatar.js']))
                 ->assertAttribute('@image', 'data-status', 'idle,loading,loaded');
         });
 
         $this->closeAll();
 
         $this->browse(function (Browser $browser) use ($script) {
-            $component = <<<"HTML"
+            $template = <<<"HTML"
                 <x-avatar dusk="avatar">
                     <x-avatar-image src="non-existing-image.png" dusk="image" x-on:loading-status-change="$script" />
                     <x-avatar-fallback dusk="fallback">CN</x-avatar-fallback>
                 </x-avatar>
             HTML;
 
-            $browser->visit($this->component($component, ['avatar.js']))
+            $browser->visit($this->component($template, ['avatar.js']))
                 ->assertAttribute('@image', 'data-status', 'idle,loading,error');
         });
     }

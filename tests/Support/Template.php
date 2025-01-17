@@ -163,9 +163,13 @@ class Template
         $js = "document.addEventListener('alpine:init', () => {\n";
 
         foreach ($scripts as $script) {
-            $name     = Str::before($script, '.');
             $contents = file_get_contents(__DIR__ . '/../../resources/js/components/' . $script);
-            $script   = Str::of($contents)
+
+            $name = Str::of($script)
+                ->before('.')
+                ->replace('-', '');
+
+            $script = Str::of($contents)
                 ->replace(
                     search : [
                         'export default',

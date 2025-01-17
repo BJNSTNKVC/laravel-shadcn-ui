@@ -159,3 +159,4 @@ the available components:
 - [Collapsible](docs/collapsible.md)
 - [Input](docs/input.md)
 - [Label](docs/label.md)
+- [Radio Group](docs/radio-group.md)

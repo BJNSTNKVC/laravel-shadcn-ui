@@ -67,7 +67,7 @@ class AddComponentCommand extends Command
         foreach ($this->fs->files($component['path']) as $file) {
             $content = Str::replace(
                 search : ['Bjnstnkvc\ShadcnUi\View\Components', 'shadcn-ui::'],
-                replace: ['App\View\Components', ''],
+                replace: ['Bjnstnkvc\ShadcnUi\View\Components', ''],
                 subject: $this->fs->get($file->getPathname())
             );
 

@@ -4,12 +4,6 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
-## [1.1.3 (2025-02-24)](https://github.com/BJNSTNKVC/laravel-shadcn-ui/compare/1.1.2...1.1.3)
-
-### Added
-
-- Added Carousel component.
-
 ## [1.1.2 (2025-01-17)](https://github.com/BJNSTNKVC/laravel-shadcn-ui/compare/1.1.1...1.1.2)
 
 ### Added

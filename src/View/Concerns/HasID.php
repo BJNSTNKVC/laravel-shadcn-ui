@@ -33,14 +33,4 @@ trait HasID
 
         return $id;
     }
-
-    /**
-     * Reset the index of the component.
-     *
-     * @return void
-     */
-    public static function reset(): void
-    {
-        self::$index = 1;
-    }
 }

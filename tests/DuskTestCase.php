@@ -102,18 +102,16 @@ class DuskTestCase extends TestCase
      *
      * @param string       $component
      * @param array|string $scripts
-     * @param array|string $cdn
      *
      * @return string
      */
-    protected function component(string $component, array|string $scripts = [], array|string $cdn = []): string
+    protected function component(string $component, array|string $scripts = []): string
     {
         return route(
             name      : 'shadcn-ui.component',
             parameters: [
                 'component' => $component,
                 'scripts'   => $scripts,
-                'cdn'       => $cdn,
             ],
             absolute  : false
         );

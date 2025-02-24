@@ -29,6 +29,13 @@ class Template
     protected string $scripts;
 
     /**
+     * CDN scripts to include.
+     *
+     * @var array|string
+     */
+    protected array|string $cdn;
+
+    /**
      * Tailwind styles.
      *
      * @var string
@@ -38,10 +45,11 @@ class Template
     /**
      * Create a new template instance.
      */
-    public function __construct(string $component, string|null $styles = null, array $scripts = [])
+    public function __construct(string $component, string|null $styles = null, array $scripts = [], array|string $cdn = [])
     {
         $this->component = $component;
         $this->styles    = $this->styles($styles);
+        $this->cdn       = $this->cdns($cdn);
         $this->scripts   = $this->scripts($scripts);
         $this->tailwind  = $this->tailwind();
     }
@@ -63,8 +71,9 @@ class Template
                         <meta name="csrf-token" content="{{ csrf_token() }}" />
                         <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
                         <script src="https://cdn.tailwindcss.com"></script>
+                        {$this->cdn}
                         <script>
-                            {$this->tailwind}
+                            {$this->tailwind};
                         </script>
                         <style>
                             {$this->styles}
@@ -75,7 +84,7 @@ class Template
                             {$this->component}
                         </main>
                         <script>
-                            {$this->scripts}
+                            {$this->scripts};
                         </script>
                     </body>
                 </html>
@@ -186,6 +195,24 @@ class Template
 
         $js .= "\n});";
 
+        if (!empty($this->cdn)) {
+            $js = Str::replaceMatches('/^import .*;$/m', '', $js);
+        }
+
         return $js;
+    }
+
+    /**
+     * Returns the cdns.
+     *
+     * @param array|string $cdn
+     *
+     * @return string
+     */
+    private function cdns(array|string $cdn = []): string
+    {
+        return collect($cdn)
+            ->map(fn(string $cdn) => "<script src=\"{$cdn}\"></script>")
+            ->implode('');
     }
 }

@@ -155,6 +155,7 @@ the available components:
 - [Breadcrumb](docs/breadcrumb.md)
 - [Button](docs/button.md)
 - [Card](docs/card.md)
+- [Carousel](docs/carousel.md)
 - [Checkbox](docs/checkbox.md)
 - [Collapsible](docs/collapsible.md)
 - [Input](docs/input.md)

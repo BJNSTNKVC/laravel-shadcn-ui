@@ -3,6 +3,7 @@
 namespace Bjnstnkvc\ShadcnUi\Tests\Support;
 
 use Bjnstnkvc\ShadcnUi\View\Components\Accordion\AccordionItem;
+use Bjnstnkvc\ShadcnUi\View\Components\Carousel\CarouselItem;
 use Bjnstnkvc\ShadcnUi\View\Components\Collapsible\Collapsible;
 
 trait ResetsComponentIndex
@@ -16,7 +17,8 @@ trait ResetsComponentIndex
     {
         parent::tearDown();
 
-        AccordionItem::reset();
-        Collapsible::reset();
+        AccordionItem::$index = 1;
+        Collapsible::$index   = 1;
+        CarouselItem::$index  = -1;
     }
 }

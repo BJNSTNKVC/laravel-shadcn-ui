@@ -22,14 +22,14 @@ class Command extends BaseCommand implements PromptsForMissingInput
      *
      * @var string
      */
-    protected const CLASS_PATH = __DIR__ . '\..\View\Components';
+    protected const CLASS_PATH = __DIR__ . '/../View/Components';
 
     /**
      * The path to the resources' directory.
      *
      * @var string
      */
-    protected const RESOURCE_PATH = __DIR__ . '\..\..\resources';
+    protected const RESOURCE_PATH = __DIR__ . '/../../resources';
 
     /**
      * List of all possible Component folders.

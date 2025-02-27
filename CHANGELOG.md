@@ -4,6 +4,13 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
+## [1.1.5 (2025-02-27)](https://github.com/BJNSTNKVC/laravel-shadcn-ui/compare/1.1.4...1.1.5)
+
+### Added
+
+- Laravel 12 support.
+- Tailwind CSS v4 support.
+
 ## [1.1.4 (2025-02-27)](https://github.com/BJNSTNKVC/laravel-shadcn-ui/compare/1.1.3...1.1.4)
 
 ### Fixed

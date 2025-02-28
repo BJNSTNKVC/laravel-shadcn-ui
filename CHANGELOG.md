@@ -4,6 +4,17 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
+## [1.1.6 (2025-02-28)](https://github.com/BJNSTNKVC/laravel-shadcn-ui/compare/1.1.5...1.1.6)
+
+### Fixed
+
+- Resolved path issue for Unix-like systems when publishing components.
+- Allowed button-less Carousel configuration.
+
+### Changed
+
+- Replace x-ref with x-bind in Carousel component.
+
 ## [1.1.5 (2025-02-27)](https://github.com/BJNSTNKVC/laravel-shadcn-ui/compare/1.1.4...1.1.5)
 
 ### Added

@@ -71,7 +71,7 @@ class AddComponentCommand extends Command
                 subject: $this->fs->get($file->getPathname())
             );
 
-            $this->fs->put("$path\\{$file->getBasename()}", $content);
+            $this->fs->put("$path/{$file->getBasename()}", $content);
         }
 
         $this->info("Component classes published at: app/View/Components/$name");

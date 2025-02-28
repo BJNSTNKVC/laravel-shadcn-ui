@@ -2,11 +2,6 @@ import EmblaCarousel from 'embla-carousel';
 import EmblaCarouselAutoplay from 'embla-carousel-autoplay';
 
 /**
- * @typedef { Object } Alpine
- * @property { { content: HTMLElement, prev: HTMLElement | HTMLButtonElement, next: HTMLElement | HTMLButtonElement } } $refs
- */
-
-/**
  * @typedef { import('embla-carousel').EmblaOptionsType } Config
  * @property { 'horizontal' | 'vertical' } orientation
  */
@@ -22,11 +17,56 @@ import EmblaCarouselAutoplay from 'embla-carousel-autoplay';
  */
 export default (config, plugins) => ({
     /**
+     * Carousel content element.
+     *
+     * @type { Object }
+     */
+    content: {
+        ['x-ref']: 'content',
+    },
+
+    /**
+     * Carousel previous button.
+     *
+     * @type { Object }
+     */
+    prev: {
+        ['x-ref']: 'prev',
+        ['@click']() {
+            this.$api.scrollPrev();
+        },
+        ...onKeyEvents,
+    },
+
+    /**
+     * Carousel next button.
+     *
+     * @type { Object }
+     */
+    next: {
+        ['x-ref']: 'next',
+        ['@click']() {
+            this.$api.scrollNext();
+        },
+        ...onKeyEvents,
+    },
+
+    /**
      * The Embla HTML element.
      *
      * @type { HTMLElement }
      */
-    $embla: undefined,
+    $embla: document.querySelector('[x-bind="content"]'),
+
+    /**
+     * The Embla buttons.
+     *
+     * @type { { prev: HTMLButtonElement, next: HTMLButtonElement } }
+     */
+    $buttons: {
+        prev: document.querySelector('[x-bind="prev"]'),
+        next: document.querySelector('[x-bind="next"]'),
+    },
 
     /**
      * The Embla API.
@@ -62,15 +102,14 @@ export default (config, plugins) => ({
      * @return { void }
      */
     init() {
-        this.$embla   = this.$refs.content;
         this.$options = this.options(config);
         this.$plugins = this.plugins(plugins);
         this.$api     = EmblaCarousel(this.$embla, this.$options, this.$plugins);
 
-        this.$refs.prev.disabled = !this.$api.canScrollPrev();
-        this.$refs.next.disabled = !this.$api.canScrollNext();
-
-        this.addEventListeners();
+        this.$api.on('select', (api) => {
+            this.$buttons.prev?.toggleAttribute('disabled', !api.canScrollPrev());
+            this.$buttons.next?.toggleAttribute('disabled', !api.canScrollNext());
+        });
     },
 
     /**
@@ -106,41 +145,27 @@ export default (config, plugins) => ({
 
         return data;
     },
+});
 
+/**
+ * Carousel Button Key events scaffolding.
+ */
+const onKeyEvents = {
     /**
-     * Add event listeners to the Carousel and its elements.
+     * Button Arrow Right event.
      *
      * @return { void }
      */
-    addEventListeners() {
-        this.$api.on('select', () => {
-            this.$refs.prev.disabled = !this.$api.canScrollPrev();
-            this.$refs.next.disabled = !this.$api.canScrollNext();
-        });
+    ['@keydown.right']() {
+        this.$api.scrollNext();
+    },
 
-        this.$refs.prev.addEventListener('click', () => this.$api.scrollPrev());
-        this.$refs.next.addEventListener('click', () => this.$api.scrollNext());
-
-        [this.$refs.prev, this.$refs.next].forEach((button) => {
-            button.addEventListener('keydown', (event) => {
-                switch (event.key) {
-                    case 'ArrowRight': {
-                        event.preventDefault();
-
-                        this.$api.scrollNext();
-
-                        break;
-                    }
-
-                    case 'ArrowLeft': {
-                        event.preventDefault();
-
-                        this.$api.scrollPrev();
-
-                        break;
-                    }
-                }
-            });
-        });
-    }
-});
+    /**
+     * Button Arrow Left event.
+     *
+     * @return { void }
+     */
+    ['@keydown.left']() {
+        this.$api.scrollPrev();
+    },
+};

@@ -19,7 +19,7 @@ class CarouselContentTest extends TestCase
         HTML;
 
         $this->assertStringContainsString(
-            needle  : '<div class="overflow-hidden" x-ref="content">',
+            needle  : '<div class="overflow-hidden" x-bind="content">',
             haystack: $this->minify($this->blade($template)),
         );
     }
@@ -34,7 +34,7 @@ class CarouselContentTest extends TestCase
         HTML;
 
         $this->assertStringContainsString(
-            needle  : '<div class="overflow-hidden bg-red-500" x-ref="content">',
+            needle  : '<div class="overflow-hidden bg-red-500" x-bind="content">',
             haystack: $this->minify($this->blade($template)),
         );
     }

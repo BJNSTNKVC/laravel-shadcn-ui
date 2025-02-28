@@ -50,7 +50,7 @@ class CarouselNext extends Component
             return $options['startIndex'] === $index;
         }
 
-        return true;
+        return $index === 0;
     }
 
     /**

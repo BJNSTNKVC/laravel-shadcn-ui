@@ -47,7 +47,7 @@ class ShadcnUiServiceProvider extends ServiceProvider
         if ($this->app->runningUnitTests()) {
             $this->loadViewsFrom(__DIR__ . '/../resources/views', 'shadcn-ui');
 
-            $directory = __DIR__ . '\View\Components';
+            $directory = __DIR__ . '/View/Components';
             $paths     = $this->files($directory);
 
             foreach ($paths as $path) {
@@ -105,7 +105,7 @@ class ShadcnUiServiceProvider extends ServiceProvider
     public static function components(): void
     {
         $fs          = new Filesystem();
-        $directories = $fs->directories(__DIR__ . '\View\Components');
+        $directories = $fs->directories(__DIR__ . '/View/Components');
 
         foreach ($directories as $directory) {
             if (!$fs->exists("{$directory}/.published")) {

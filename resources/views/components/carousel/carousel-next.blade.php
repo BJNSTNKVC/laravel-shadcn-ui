@@ -4,7 +4,7 @@
         ->merge([
             'role' => 'group',
             'aria-roledescription' => 'slide',
-            'x-ref' => 'next',
+            'x-bind' => 'next',
             'disabled' => $disabled ? '' : null,
         ])
         ->class([

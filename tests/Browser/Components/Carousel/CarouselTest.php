@@ -59,7 +59,8 @@ class CarouselTest extends DuskTestCase
     #[Test]
     public function it_changes_to_the_next_carousel_item(): void
     {
-        $template = <<<'HTML'
+        $this->browse(function (Browser $browser) {
+            $template = <<<'HTML'
                 <x-carousel class="w-full max-w-xs">
                     <x-carousel-content>
                         <x-carousel-item dusk="item-1">
@@ -86,7 +87,6 @@ class CarouselTest extends DuskTestCase
                 </x-carousel>
             HTML;
 
-        $this->browse(function (Browser $browser) use ($template) {
             $browser
                 ->visit(
                     $this->component(
@@ -101,21 +101,8 @@ class CarouselTest extends DuskTestCase
                 ->click('@next')
                 ->pause(500)
                 ->assertDontSee(1)
-                ->assertSee(2);
-        });
-
-        $this->browse(function (Browser $browser) use ($template) {
-            $browser
-                ->visit(
-                    $this->component(
-                        component: $template,
-                        scripts  : ['carousel.js'],
-                        cdn      : [
-                            'https://unpkg.com/embla-carousel/embla-carousel.umd.js',
-                            'https://unpkg.com/embla-carousel-autoplay/embla-carousel-autoplay.umd.js',
-                        ]
-                    )
-                )
+                ->assertSee(2)
+                ->refresh()
                 ->clickAndHold('@item-1')
                 ->dragLeft('@item-1', 500)
                 ->pause(1000)
@@ -127,7 +114,8 @@ class CarouselTest extends DuskTestCase
     #[Test]
     public function it_changes_to_the_previous_carousel_item(): void
     {
-        $template = <<<'HTML'
+        $this->browse(function (Browser $browser) {
+            $template = <<<'HTML'
                 <x-carousel class="w-full max-w-xs">
                     <x-carousel-content>
                         <x-carousel-item dusk="item-1">
@@ -154,7 +142,6 @@ class CarouselTest extends DuskTestCase
                 </x-carousel>
             HTML;
 
-        $this->browse(function (Browser $browser) use ($template) {
             $browser
                 ->visit(
                     $this->component(
@@ -173,21 +160,8 @@ class CarouselTest extends DuskTestCase
                 ->click('@previous')
                 ->pause(500)
                 ->assertSee(1)
-                ->assertDontSee(2);
-        });
-
-        $this->browse(function (Browser $browser) use ($template) {
-            $browser
-                ->visit(
-                    $this->component(
-                        component: $template,
-                        scripts  : ['carousel.js'],
-                        cdn      : [
-                            'https://unpkg.com/embla-carousel/embla-carousel.umd.js',
-                            'https://unpkg.com/embla-carousel-autoplay/embla-carousel-autoplay.umd.js',
-                        ]
-                    )
-                )
+                ->assertDontSee(2)
+                ->refresh()
                 ->dragLeft('@item-1', 500)
                 ->assertDontSee(1)
                 ->assertSee(2)

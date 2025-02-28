@@ -2,7 +2,7 @@
     /* @var Illuminate\View\ComponentAttributeBag $attributes */
     $root = $attributes
         ->merge([
-            'x-ref' => 'content',
+            'x-bind' => 'content',
         ])
         ->class('overflow-hidden');
 

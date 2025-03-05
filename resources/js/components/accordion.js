@@ -1,44 +1,18 @@
 /**
- * @typedef { 'vertical' | 'horizontal' } Orientation
- * @typedef { 'open' | 'closed' } State
- * @typedef { 'single' | 'multiple' } Type
- * @typedef { 'ltr' | 'rtl' } Direction
- */
-
-/**
- * @typedef { Object } Item
- * @property { String } id
- * @property { String } value
- * @property { HTMLElement } container
- * @property { HTMLElement } title
- * @property { HTMLElement } button
- * @property { HTMLElement } content
- * @property { Orientation } orientation
- * @property { State } state
- */
-
-/**
- * @typedef { Object } Config
- * @property { Type } type
- * @property { Boolean } collapsible
- * @property { Direction } direction
- */
-
-/**
- * @param { Config } config
+ * @param { import('bjnstnkvc/shadcn-ui/accordion').Config } config
  */
 export default (config) => ({
 	/**
 	 * Accordion element.
 	 *
-	 * @type { HTMLElement }
+	 * @type { HTMLDivElement | HTMLElement }
 	 */
 	$accordion: undefined,
 
 	/**
 	 * Accordion items.
 	 *
-	 * @type { Item[] }
+	 * @type { import('bjnstnkvc/shadcn-ui/accordion').Item[] }
 	 */
 	$items: [],
 
@@ -47,7 +21,7 @@ export default (config) => ({
 	 *
 	 * @type { Number }
 	 */
-	$duration: 195,
+	$duration: 190,
 
 	/**
 	 * Initialize the accordion.
@@ -64,10 +38,10 @@ export default (config) => ({
 	 * @param { String } id
 	 * @param { String } value
 	 *
-	 * @return { Item }
+	 * @return { import('bjnstnkvc/shadcn-ui/accordion').Item }
 	 */
 	set(id, value) {
-		/** @type { Item } */
+		/** @type { import('bjnstnkvc/shadcn-ui/accordion').Item } */
 		const $item = {
 			id         : id,
 			value      : value,
@@ -93,7 +67,7 @@ export default (config) => ({
 	 *
 	 * @param { String } id
 	 *
-	 * @return { Item }
+	 * @return { import('bjnstnkvc/shadcn-ui/accordion').Item }
 	 */
 	find(id) {
 		return this.$items.find(item => item.id === id);
@@ -102,7 +76,7 @@ export default (config) => ({
 	/**
 	 * Open an item.
 	 *
-	 * @param { Item } item
+	 * @param { import('bjnstnkvc/shadcn-ui/accordion').Item } item
 	 *
 	 * @return { void }
 	 */
@@ -121,7 +95,7 @@ export default (config) => ({
 	/**
 	 * Close an item.
 	 *
-	 * @param { Item } item
+	 * @param { import('bjnstnkvc/shadcn-ui/accordion').Item } item
 	 *
 	 * @return { void }
 	 */
@@ -159,8 +133,8 @@ export default (config) => ({
 	/**
 	 * Set the state of an item.
 	 *
-	 * @param { Item } item
-	 * @param { State } state
+	 * @param { import('bjnstnkvc/shadcn-ui/accordion').Item } item
+	 * @param { import('bjnstnkvc/shadcn-ui/accordion').State } state
 	 *
 	 * @return { void }
 	 */
@@ -175,7 +149,7 @@ export default (config) => ({
 	/**
 	 * Set the height and width of an item.
 	 *
-	 * @param { Item } item
+	 * @param { import('bjnstnkvc/shadcn-ui/accordion').Item } item
 	 *
 	 * @return { void }
 	 */
@@ -187,7 +161,7 @@ export default (config) => ({
 	/**
 	 * Focus an item button.
 	 *
-	 * @param { Item } item
+	 * @param { import('bjnstnkvc/shadcn-ui/accordion').Item } item
 	 *
 	 * @return { void }
 	 */
@@ -202,7 +176,7 @@ export default (config) => ({
 	/**
 	 * Get the next item.
 	 *
-	 * @return { Item | null }
+	 * @return { import('bjnstnkvc/shadcn-ui/accordion').Item | null }
 	 */
 	next() {
 		const item  = this.find(document.activeElement.id);
@@ -218,7 +192,7 @@ export default (config) => ({
 	/**
 	 * Get the previous item.
 	 *
-	 * @return { Item | null }
+	 * @return { import('bjnstnkvc/shadcn-ui/accordion').Item | null }
 	 */
 	prev() {
 		const item  = this.find(document.activeElement.id);
@@ -232,9 +206,9 @@ export default (config) => ({
 	},
 
 	/**
-	 * Determine if an item is config.collapsible.
+	 * Determine if an item is collapsible.
 	 *
-	 * @param { Item } item
+	 * @param { import('bjnstnkvc/shadcn-ui/accordion').Item } item
 	 *
 	 * @return { Boolean }
 	 */
@@ -243,9 +217,9 @@ export default (config) => ({
 	},
 
 	/**
-	 * Determine if an item is not config.collapsible.
+	 * Determine if an item is not collapsible.
 	 *
-	 * @param { Item } item
+	 * @param { import('bjnstnkvc/shadcn-ui/accordion').Item } item
 	 *
 	 * @return { Boolean }
 	 */
@@ -256,7 +230,7 @@ export default (config) => ({
 	/**
 	 * Add event listeners to an item.
 	 *
-	 * @param { Item } item
+	 * @param { import('bjnstnkvc/shadcn-ui/accordion').Item } item
 	 *
 	 * @return { void }
 	 */
@@ -340,7 +314,7 @@ export default (config) => ({
 	/**
 	 * Get the active items.
 	 *
-	 * @return { Item[] }
+	 * @return { import('bjnstnkvc/shadcn-ui/accordion').Item[] }
 	 */
 	get active() {
 		return this.$items.filter(item => item.state === 'open');
@@ -349,7 +323,7 @@ export default (config) => ({
 	/**
 	 * Get the first item.
 	 *
-	 * @return { Item }
+	 * @return { import('bjnstnkvc/shadcn-ui/accordion').Item }
 	 */
 	get first() {
 		return this.$items[0];
@@ -358,7 +332,7 @@ export default (config) => ({
 	/**
 	 * Get the last item.
 	 *
-	 * @return { Item }
+	 * @return { import('bjnstnkvc/shadcn-ui/accordion').Item }
 	 */
 	get last() {
 		return this.$items[this.$items.length - 1];

@@ -82,6 +82,12 @@ class ShadcnUiServiceProvider extends ServiceProvider
                 ],
                 groups: 'shadcn-ui-tailwind-config'
             );
+            $this->publishes(
+                paths : [
+                    __DIR__ . '/../jsconfig.json' => $this->app->basePath('jsconfig.json'),
+                ],
+                groups: 'shadcn-ui-jsconfig'
+            );
         }
     }
 

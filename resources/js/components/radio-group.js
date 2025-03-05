@@ -1,38 +1,18 @@
 /**
- * @typedef { 'checked' | 'unchecked' | 'indeterminate' } State
- * @typedef { 'show' | 'hide' } Visibility
- */
-
-/**
- * @typedef { Object } Config
- * @property { Boolean } loop
- */
-
-/**
- * @typedef { Object } Item
- * @property { String } id
- * @property { String } value
- * @property { State } state
- * @property { HTMLElement } element
- * @property { HTMLElement } indicator
- * @property { HTMLInputElement | undefined } input
- */
-
-/**
- * @param { Config } config
+ * @param { import('bjnstnkvc/shadcn-ui/radio').Config } config
  */
 export default (config) => ({
     /**
      * Radio group element.
      *
-     * @type { HTMLElement }
+     * @type { HTMLDivElement | HTMLElement }
      */
     $group: undefined,
 
     /**
      * Radio group items.
      *
-     * @type { Item[] }
+     * @type { import('bjnstnkvc/shadcn-ui/radio').Item[] }
      */
     $items: [],
 
@@ -51,16 +31,17 @@ export default (config) => ({
     /**
      * Get the radio items.
      *
-     * @return { Item[] }
+     * @return { import('bjnstnkvc/shadcn-ui/radio').Item[] }
      */
     items() {
-        return [...this.$group.querySelectorAll('[x-ref="radio"]')].map((item) => {
-            item = {
-                id       : item.id,
-                value    : item.value,
-                state    : item.dataset.state,
-                element  : item,
-                indicator: item.querySelector('[x-ref="indicator"]'),
+        return [...this.$group.querySelectorAll('[x-ref="radio"]')].map((radio) => {
+            /** @type { import('bjnstnkvc/shadcn-ui/radio').Item } */
+            const item = {
+                id       : radio.id,
+                value    : radio.value,
+                state    : radio.dataset.state,
+                element  : radio,
+                indicator: radio.querySelector('[x-ref="indicator"]'),
             };
 
             if (this.isInForm) {
@@ -74,7 +55,7 @@ export default (config) => ({
     /**
      * Check the radio item.
      *
-     * @param { Item } item
+     * @param { import('bjnstnkvc/shadcn-ui/radio').Item } item
      *
      * @return { void }
      */
@@ -88,7 +69,7 @@ export default (config) => ({
     /**
      * Uncheck the radio item.
      *
-     * @param { Item } item
+     * @param { import('bjnstnkvc/shadcn-ui/radio').Item } item
      *
      * @return { void }
      */
@@ -100,7 +81,7 @@ export default (config) => ({
     /**
      * Toggle the radio item.
      *
-     * @param { Item } item
+     * @param { import('bjnstnkvc/shadcn-ui/radio').Item } item
      *
      * @return { void }
      */
@@ -119,8 +100,8 @@ export default (config) => ({
     /**
      * Set the state of the radio item.
      *
-     * @param { Item } item
-     * @param { State } state
+     * @param { import('bjnstnkvc/shadcn-ui/radio').Item } item
+     * @param { import('bjnstnkvc/shadcn-ui/radio').State } state
      *
      * @return { void }
      */
@@ -138,19 +119,19 @@ export default (config) => ({
     /**
      * Set the visibility of the indicator.
      *
-     * @param { Item } item
-     * @param { Visibility } state
+     * @param { import('bjnstnkvc/shadcn-ui/radio').Item } item
+     * @param { import('bjnstnkvc/shadcn-ui/radio').Visibility } visibility
      *
      * @return { void }
      */
-    indicator(item, state) {
+    indicator(item, visibility) {
         if (!item.indicator) {
             return;
         }
 
         item.indicator.dataset.state = item.state;
 
-        return state === 'show'
+        return visibility === 'show'
             ? item.indicator.classList.remove('hidden')
             : item.indicator.classList.add('hidden');
     },
@@ -158,7 +139,7 @@ export default (config) => ({
     /**
      * Create an input element for the radio item if it is inside a form.
      *
-     * @param { Item } item
+     * @param { import('bjnstnkvc/shadcn-ui/radio').Item } item
      *
      * @returns { HTMLInputElement | undefined }
      */
@@ -167,14 +148,7 @@ export default (config) => ({
 
         input.type = 'radio';
 
-        if (item.element.id) {
-            input.id = item.element.id;
-        }
-
-        if (item.element.id || item.element.name) {
-            input.name = item.element.name || item.element.id;
-        }
-
+        input.id         = item.element.id;
         input.name       = item.element.name || item.element.id;
         input.required   = item.element.ariaRequired === 'true';
         input.disabled   = item.element.disabled;
@@ -204,7 +178,7 @@ export default (config) => ({
      *
      * @param { HTMLElement } element
      *
-     * @return { Item }
+     * @return { import('bjnstnkvc/shadcn-ui/radio').Item }
      */
     find(element) {
         return this.$items.find(item => item.element === element);
@@ -213,7 +187,7 @@ export default (config) => ({
     /**
      * Focus a radio item.
      *
-     * @param { Item } item
+     * @param { import('bjnstnkvc/shadcn-ui/radio').Item } item
      *
      * @return { void }
      */
@@ -228,7 +202,7 @@ export default (config) => ({
     /**
      * Get the next radio item.
      *
-     * @return { Item | null }
+     * @return { import('bjnstnkvc/shadcn-ui/radio').Item | null }
      */
     next() {
         const item  = this.find(document.activeElement);
@@ -244,7 +218,7 @@ export default (config) => ({
     /**
      * Get the previous radio item.
      *
-     * @return { Item | null }
+     * @return { import('bjnstnkvc/shadcn-ui/radio').Item | null }
      */
     prev() {
         const item  = this.find(document.activeElement);
@@ -333,7 +307,7 @@ export default (config) => ({
     /**
      * Get the active radio item.
      *
-     * @return { Item }
+     * @return { import('bjnstnkvc/shadcn-ui/radio').Item }
      */
     get active() {
         return this.$items.find(item => item.state === 'checked');
@@ -342,7 +316,7 @@ export default (config) => ({
     /**
      * Get the first radio item.
      *
-     * @return { Item }
+     * @return { import('bjnstnkvc/shadcn-ui/radio').Item }
      */
     get first() {
         return this.$items.at(0);
@@ -351,7 +325,7 @@ export default (config) => ({
     /**
      * Get the last radio item.
      *
-     * @return { Item }
+     * @return { import('bjnstnkvc/shadcn-ui/radio').Item }
      */
     get last() {
         return this.$items.at(-1);

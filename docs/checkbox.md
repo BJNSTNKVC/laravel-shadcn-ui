@@ -22,8 +22,9 @@ Alpine.start();
 
 ## Usage
 
-```html
+### Default
 
+```html
 <div class="flex items-center space-x-2">
 	<x-checkbox id="terms" />
 	<label
@@ -35,6 +36,38 @@ Alpine.start();
 </div>
 ```
 
+### With text
+
+```html
+<div class="flex items-top space-x-2">
+	<x-checkbox id="terms" />
+	<div class="grid gap-1.5 leading-none">
+		<label
+			for="terms"
+			class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+		>
+			Accept terms and conditions
+		</label>
+		<p class="text-sm text-muted-foreground">
+			You agree to our Terms of Service and Privacy Policy.
+		</p>
+	</div>
+</div>
+```
+
+### Disabled
+
+```html
+<div class="flex items-center space-x-2">
+	<x-checkbox id="terms" disabled />
+	<label
+	  for="terms"
+	  class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+	>
+		Accept terms and conditions
+	</label>
+</div>
+```
 ## Props
 
 ### Checkbox

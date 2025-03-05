@@ -29,23 +29,123 @@ Alpine.start();
 
 ## Usage
 
+### Default
+
 ```html
 <x-carousel class="w-full max-w-xs">
 	<x-carousel-content>
 		@for ($i = 0; $i < 5; $i++)
 		<x-carousel-item>
-			<div class="p-1">
-				<div class="rounded-xl border bg-card text-card-foreground shadow">
-					<div class="flex aspect-square items-center justify-center p-6">
-						<span class="text-4xl font-semibold">{{ $i + 1 }}</span>
-					</div>
-				</div>
-			</div>
+			<x-card>
+				<x-card-content class="flex aspect-square items-center justify-center !p-6">
+					<span class="text-4xl font-semibold">{{ $i + 1 }}</span>
+				</x-card-content>
+			</x-card>
 		</x-carousel-item>
 		@endfor
 	</x-carousel-content>
 	<x-carousel-previous />
 	<x-carousel-next />
+</x-carousel>
+```
+> Note: Example above uses [Card](card.md) component.
+
+### Sizes
+
+To set the size of the items, you can use the basis utility class on the `<x-carousel-item />`.
+
+```html
+<x-carousel :options="['align' => 'start']" class="w-full max-w-xs">
+	<x-carousel-content>
+		@for ($i = 0; $i < 5; $i++)
+		<x-carousel-item class="md:basis-1/2 lg:basis-1/3">
+			<x-card>
+				<x-card-content class="flex aspect-square items-center justify-center !p-6">
+					<span class="text-4xl font-semibold">{{ $i + 1 }}</span>
+				</x-card-content>
+			</x-card>
+		</x-carousel-item>
+		@endfor
+	</x-carousel-content>
+	<x-carousel-previous />
+	<x-carousel-next />
+</x-carousel>
+```
+> Note: Example above uses [Card](card.md) component.
+
+### Orientation
+
+Use the orientation prop to set the orientation of the carousel.
+
+```html
+<x-carousel :options="['align' => 'start']" orientation="vertical" class="w-full max-w-xs">
+	<x-carousel-content class="-mt-1 h-[200px]">
+		@for ($i = 0; $i < 5; $i++)
+		<x-carousel-item class="pt-1 md:basis-1/2">
+			<x-card>
+				<x-card-content class="flex items-center justify-center !p-6">
+					<span class="text-3xl font-semibold">{{ $i + 1 }}</span>
+				</x-card-content>
+			</x-card>
+		</x-carousel-item>
+		@endfor
+	</x-carousel-content>
+	<x-carousel-previous />
+	<x-carousel-next />
+</x-carousel>
+```
+> Note: Example above uses [Card](card.md) component.
+
+### API
+
+Use [x-init](https://alpinejs.dev/directives/init) and `$api` to get an instance of the carousel API.
+
+```html
+<x-carousel
+	class="w-full max-w-xs"
+	x-init="
+        $props.current = $api.selectedScrollSnap() + 1;
+        $props.count = 5;
+        $api.on('select', (api) => $props.current = api.selectedScrollSnap() + 1})
+    "
+>
+	<x-carousel-content>
+		@for ($i = 0; $i < 5; $i++)
+		<x-carousel-item>
+			<x-card>
+				<x-card-content class="flex aspect-square items-center justify-center !p-6">
+					<span class="text-4xl font-semibold">{{ $i + 1 }}</span>
+				</x-card-content>
+			</x-card>
+		</x-carousel-item>
+		@endfor
+	</x-carousel-content>
+	<x-carousel-previous />
+	<x-carousel-next />
+	<div class="py-2 text-center text-sm text-muted-foreground" x-text="`Slide ${$props.current} of ${$props.count}`" />
+</x-carousel>
+```
+> Note: Example above uses [Card](card.md) component.
+
+### Plugins
+
+You can use the `plugins` prop to add plugins to the carousel.
+
+```html
+<x-carousel class="w-full max-w-xs" :plugins="['autoplay' => ['delay' => 3000]]">
+    <x-carousel-content>
+        @for ($i = 0; $i < 5; $i++)
+            <x-carousel-item>
+                <x-card>
+                    <x-card-content class="flex aspect-square items-center justify-center !p-6">
+                        <span class="text-4xl font-semibold">{{ $i + 1 }}</span>
+                    </x-card-content>
+                </x-card>
+            </x-carousel-item>
+        @endfor
+    </x-carousel-content>
+    <x-carousel-previous />
+    <x-carousel-next />
 </x-carousel>
 ```
 

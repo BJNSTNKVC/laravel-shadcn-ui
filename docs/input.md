@@ -42,8 +42,6 @@ php artisan shadcn:add Input
 ```
 > Note: Example above uses [Button](button.md) component.
 
-
-
 ## Props
 
 ### Input

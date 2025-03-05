@@ -2,18 +2,8 @@ import EmblaCarousel from 'embla-carousel';
 import EmblaCarouselAutoplay from 'embla-carousel-autoplay';
 
 /**
- * @typedef { import('embla-carousel').EmblaOptionsType } Config
- * @property { 'horizontal' | 'vertical' } orientation
- */
-
-/**
- * @typedef { Object } Plugins
- * @property { EmblaCarouselAutoplay } autoplay
- */
-
-/**
- * @param { Config } config
- * @param { Plugins } plugins
+ * @param { import('bjnstnkvc/shadcn-ui/carousel').Config } config
+ * @param { import('bjnstnkvc/shadcn-ui/carousel').Plugins } plugins
  */
 export default (config, plugins) => ({
     /**
@@ -54,14 +44,14 @@ export default (config, plugins) => ({
     /**
      * The Embla HTML element.
      *
-     * @type { HTMLElement }
+     * @type { HTMLDivElement | HTMLElement }
      */
     $embla: document.querySelector('[x-bind="content"]'),
 
     /**
      * The Embla buttons.
      *
-     * @type { { prev: HTMLButtonElement, next: HTMLButtonElement } }
+     * @type { { prev: HTMLButtonElement | HTMLElement, next: HTMLButtonElement | HTMLElement } }
      */
     $buttons: {
         prev: document.querySelector('[x-bind="prev"]'),
@@ -115,7 +105,7 @@ export default (config, plugins) => ({
     /**
      * Set the Carousel options.
      *
-     * @param { Config } config
+     * @param { import('bjnstnkvc/shadcn-ui/carousel').Config } config
      *
      * @return { import('embla-carousel').EmblaOptionsType }
      */
@@ -130,7 +120,7 @@ export default (config, plugins) => ({
     /**
      * Set the Carousel plugins.
      *
-     * @param { Plugins } plugins
+     * @param { import('bjnstnkvc/shadcn-ui/carousel').Config } plugins
      *
      * @return { Array }
      */
@@ -148,7 +138,7 @@ export default (config, plugins) => ({
 });
 
 /**
- * Carousel Button Key events scaffolding.
+ * Carousel Button scaffolding.
  */
 const onKeyEvents = {
     /**

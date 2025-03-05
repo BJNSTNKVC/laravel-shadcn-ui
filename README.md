@@ -8,7 +8,7 @@ designed to simplify the integration of modern, accessible, and customizable UI 
 You can install the package via composer:
 
 ```bash
-composer require bjnstnkvc/shadcn-ui --dev
+composer require bjnstnkvc/shadcn-ui
 ```
 
 The package will automatically register its service provider.
@@ -302,6 +302,12 @@ Import Alpine into your bundle and initialize it in your `resources/js/app.js` f
 import Alpine from 'alpinejs';
 
 Alpine.start();
+```
+
+Last but not least, publish the `jsconfig.json` file:
+
+```bash
+php artisan vendor:publish --tag=shadcn-ui-jsconfig
 ```
 
 In order to bootstrap the components, add the following line to your `AppServiceProvider` boot method:

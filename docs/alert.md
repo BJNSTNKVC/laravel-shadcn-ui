@@ -10,6 +10,8 @@ php artisan shadcn:add Alert
 
 ## Usage
 
+### Default 
+
 ```html
 <x-alert>
 	<svg
@@ -32,6 +34,35 @@ php artisan shadcn:add Alert
 	</x-alert-title>
 	<x-alert-description>
 		You can add components to your app using the cli.
+	</x-alert-description>
+</x-alert>
+```
+
+### Destructive
+
+```html
+<x-alert type="destructive">
+	<svg
+		xmlns="http://www.w3.org/2000/svg"
+		width="24"
+		height="24"
+		viewBox="0 0 24 24"
+		fill="none"
+		stroke="currentColor"
+		stroke-width="2"
+		stroke-linecap="round"
+		stroke-linejoin="round"
+		class="lucide lucide-circle-alert h-4 w-4"
+	>
+		<circle cx="12" cy="12" r="10"></circle>
+		<line x1="12" x2="12" y1="8" y2="12"></line>
+		<line x1="12" x2="12.01" y1="16" y2="16"></line>
+	</svg>
+	<x-alert-title>
+		Error
+	</x-alert-title>
+	<x-alert-description>
+		Your session has expired. Please log in again.
 	</x-alert-description>
 </x-alert>
 ```

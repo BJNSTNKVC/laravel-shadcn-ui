@@ -10,6 +10,81 @@ php artisan shadcn:add Breadcrumb
 
 ## Usage
 
+### Default
+
+```html
+<x-breadcrumb>
+	<x-breadcrumb-list>
+		<x-breadcrumb-item>
+			<x-breadcrumb-link href="/">Home</x-breadcrumb-link>
+		</x-breadcrumb-item>
+		<x-breadcrumb-separator />
+		<x-breadcrumb-item>
+			<x-breadcrumb-link href="/components">Components</x-breadcrumb-link>
+		</x-breadcrumb-item>
+		<x-breadcrumb-separator />
+		<x-breadcrumb-separator />
+		<x-breadcrumb-item>
+			<x-breadcrumb-page>Breadcrumb</x-breadcrumb-page>
+		</x-breadcrumb-item>
+	</x-breadcrumb-list>
+</x-breadcrumb>
+```
+
+### Custom Separator
+
+Use a custom component as children for `<x-breadcrumb-separator />` to create a custom separator.
+
+```html
+<x-breadcrumb>
+    <x-breadcrumb-list>
+        <x-breadcrumb-item>
+            <x-breadcrumb-link href="/">Home</x-breadcrumb-link>
+        </x-breadcrumb-item>
+        <x-breadcrumb-separator>
+            <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+            >
+                <path d="M22 2 2 22" />
+            </svg>
+        </x-breadcrumb-separator>
+        <x-breadcrumb-item>
+            <x-breadcrumb-link href="/components">Components</x-breadcrumb-link>
+        </x-breadcrumb-item>
+        <x-breadcrumb-separator>
+            <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+            >
+                <path d="M22 2 2 22" />
+            </svg>
+        </x-breadcrumb-separator>
+        <x-breadcrumb-item>
+            <x-breadcrumb-page>Breadcrumb</x-breadcrumb-page>
+        </x-breadcrumb-item>
+    </x-breadcrumb-list>
+</x-breadcrumb>
+```
+
+### Collapsed
+
+We provide a `<x-breadcrumb-ellipsis />` component to show a collapsed state when the breadcrumb is too long.
+
 ```html
 <x-breadcrumb>
 	<x-breadcrumb-list>

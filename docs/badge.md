@@ -10,8 +10,28 @@ php artisan shadcn:add Badge
 
 ## Usage
 
+### Default
+
 ```html
 <x-badge>Badge</x-badge>
+```
+
+### Secondary
+
+```html
+<x-badge variant="secondary">Secondary</x-badge>
+```
+
+### Outline
+
+```html
+<x-badge variant="outline">Outline</x-badge>
+```
+
+### Destructive
+
+```html
+<x-badge variant="destructive">Destructive</x-badge>
 ```
 
 ## Props

@@ -29,24 +29,24 @@ Alpine.start();
 			@peduarte starred 3 repositories
 		</h4>
 		<x-collapsible-trigger as-child>
-			<button class="flex items-center justify-between h-9 w-9 px-3 p-0">
+			<x-button variant="ghost" size="sm" className="w-9 p-0">
 				<svg
-				  xmlns="http://www.w3.org/2000/svg"
-				  width="24"
-				  height="24"
-				  viewBox="0 0 24 24"
-				  fill="none"
-				  stroke="currentColor"
-				  stroke-width="2"
-				  stroke-linecap="round"
-				  stroke-linejoin="round"
-				  class="h-4 w-4 shrink-0 "
+					xmlns="http://www.w3.org/2000/svg"
+					width="24"
+					height="24"
+					viewBox="0 0 24 24"
+					fill="none"
+					stroke="currentColor"
+					stroke-width="2"
+					stroke-linecap="round"
+					stroke-linejoin="round"
+					class="h-4 w-4 shrink-0 "
 				>
 					<path d="m7 15 5 5 5-5" />
 					<path d="m7 9 5-5 5 5" />
 				</svg>
 				<span class="sr-only">Toggle</span>
-			</button>
+			</x-button>
 		</x-collapsible-trigger>
 	</div>
 	<div class="rounded-md border px-4 py-3 font-mono text-sm">
@@ -62,6 +62,7 @@ Alpine.start();
 	</x-collapsible-content>
 </x-collapsible>
 ```
+> Note: Example above uses [Button](button.md) component.
 
 ## Props
 
